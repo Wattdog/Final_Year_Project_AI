@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class UI_Handler : MonoBehaviour
 {
-    private bool trap;
-    private bool noTrap;
+    public bool trap;
+    public bool noTrap;
 
     // Start is called before the first frame update
     void Start()
