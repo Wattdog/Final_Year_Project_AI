@@ -57,6 +57,7 @@ public class SelectTile : MonoBehaviour
             if (tile.GetComponent<Renderer>().material.name != "Trap")
             {
                 tile.GetComponent<Renderer>().material = trap;
+                tile.tag = "Trap";
                 maxLimit++;
             }
             Debug.Log(maxLimit);
@@ -69,6 +70,7 @@ public class SelectTile : MonoBehaviour
             if (tile.GetComponent<Renderer>().material.name != "Normal Tile")
             {
                 tile.GetComponent<Renderer>().material = noTrap;
+                tile.tag = "No Trap";
                 maxLimit--;
             }
             Debug.Log(maxLimit);
