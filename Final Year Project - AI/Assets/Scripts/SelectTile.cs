@@ -16,6 +16,11 @@ public class SelectTile : MonoBehaviour
     public int limit;
     public int maxLimit;
 
+    private void Start()
+    {
+        tile.GetComponent<Transform>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -26,15 +31,15 @@ public class SelectTile : MonoBehaviour
             // Gets the current game object the mouse cursor is hovering over
             tile = hit.collider.gameObject;
             // Gets the transform component and changes the y position 
-            //while the mouse is hovering over the game object
-            tile.GetComponent<Transform>();
-            tile.transform.localPosition = new Vector3(tile.transform.localPosition.x, pos, tile.transform.localPosition.z);
+            // while the mouse is hovering over the game object
+            //tile.transform.localPosition = new Vector3(tile.transform.localPosition.x, pos, tile.transform.localPosition.z);
         }
         else
         {
             // Puts the game object back to the original position
-            tile.transform.localPosition = new Vector3(tile.transform.localPosition.x, 0, tile.transform.localPosition.z);
+            //tile.transform.localPosition = new Vector3(tile.transform.localPosition.x, 0, tile.transform.localPosition.z);
         }
+
 
         // Checks to see if the left mouse button has been pressed
         // If it has been pressed it will then check if it has been pressed
