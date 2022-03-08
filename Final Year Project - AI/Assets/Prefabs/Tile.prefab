@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4443697514130780771}
   - component: {fileID: 4443697514130780768}
   - component: {fileID: 4443697514130780769}
-  - component: {fileID: 4443697514130780770}
+  - component: {fileID: 5815942799507897625}
   m_Layer: 0
   m_Name: Tile
   m_TagString: No Trap
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4443697514130780772}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children: []
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4443697514130780770
+--- !u!65 &5815942799507897625
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -18,7 +18,7 @@ public class SelectTile : MonoBehaviour
 
     private void Start()
     {
-        tile.GetComponent<Transform>();
+
     }
 
     // Update is called once per frame
@@ -30,6 +30,7 @@ public class SelectTile : MonoBehaviour
         {
             // Gets the current game object the mouse cursor is hovering over
             tile = hit.collider.gameObject;
+            tile.GetComponent<Transform>();
             // Gets the transform component and changes the y position 
             // while the mouse is hovering over the game object
             //tile.transform.localPosition = new Vector3(tile.transform.localPosition.x, pos, tile.transform.localPosition.z);

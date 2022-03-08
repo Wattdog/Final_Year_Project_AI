@@ -9,6 +9,10 @@ public class UI_Handler : MonoBehaviour
     public bool noTrap;
     public bool start;
 
+    public Button trapButton;
+    public Button noTrapButton;
+    public Button startButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +31,9 @@ public class UI_Handler : MonoBehaviour
     {
         // Starts training
         start = true;
+        trapButton.gameObject.SetActive(false);
+        noTrapButton.gameObject.SetActive(false);
+        startButton.gameObject.SetActive(false);
     }
 
     public void setTrap()

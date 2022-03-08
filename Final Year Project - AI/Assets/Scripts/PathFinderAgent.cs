@@ -10,6 +10,7 @@ public class PathFinderAgent : Agent
     Vector3 startPos;
 
     public Transform Target;
+    public Transform Tiles;
     public float speed = 2.5f;
     public UI_Handler ui;
 
@@ -34,8 +35,9 @@ public class PathFinderAgent : Agent
     {
         // Target and Agent Positions
         sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(Tiles.localPosition);
         sensor.AddObservation(this.transform.localPosition);
-
+        
         // Agent Velocity
         sensor.AddObservation(rBody.velocity.x);
         sensor.AddObservation(rBody.velocity.z);
@@ -45,6 +47,7 @@ public class PathFinderAgent : Agent
     {
         if (ui.start == true)
         {
+            AddReward(-0.01f);
             Vector3 controlSignal = Vector3.zero;
             controlSignal.x = vectorAction[0];
             controlSignal.z = vectorAction[1];
@@ -54,7 +57,8 @@ public class PathFinderAgent : Agent
 
             if (distanceToTarget < 1.42f)
             {
-                SetReward(1.0f);
+                AddReward(1.0f);
+                Debug.Log("Reached Target!");
                 EndEpisode();
             }
         }
@@ -64,15 +68,5 @@ public class PathFinderAgent : Agent
     {
         actionsOut[0] = Input.GetAxis("Horizontal");
         actionsOut[1] = Input.GetAxis("Vertical");
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Trap"))
-        {
-            Debug.Log("Trap hit");
-            SetReward(-1.0f);
-            EndEpisode();
-        }
     }
 }
