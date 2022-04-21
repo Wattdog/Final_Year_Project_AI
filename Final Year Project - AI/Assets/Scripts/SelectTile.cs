@@ -59,26 +59,20 @@ public class SelectTile : MonoBehaviour
         // Checks to see if the trap boolean is set to true
         if (ui.trap == true && maxLimit != limit)
         {
-            // Sets the tile to have a trap
-            if (tile.GetComponent<Renderer>().material.name != "Trap")
-            {
-                tile.GetComponent<Renderer>().material = trap;
-                tile.tag = "Trap";
-                maxLimit++;
-            }
+            tile = hit.collider.gameObject;
+            tile.transform.GetChild(0).gameObject.SetActive(true);
+            tile.tag = "Trap";
+            maxLimit++;
             Debug.Log(maxLimit);
         }
 
         // Checks to see if the noTrap boolean is set to true
         if (ui.noTrap == true && maxLimit <= limit && maxLimit != 0)
         {
-            // Sets the tile to have no trap
-            if (tile.GetComponent<Renderer>().material.name != "Normal Tile")
-            {
-                tile.GetComponent<Renderer>().material = noTrap;
-                tile.tag = "No Trap";
-                maxLimit--;
-            }
+            tile = hit.collider.gameObject;
+            tile.transform.GetChild(0).gameObject.SetActive(false);
+            tile.tag = "No Trap";
+            maxLimit--;
             Debug.Log(maxLimit);
         }
     }

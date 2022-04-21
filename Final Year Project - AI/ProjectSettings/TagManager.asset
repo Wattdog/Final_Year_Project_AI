@@ -8,6 +8,7 @@ TagManager:
   - No Trap
   - Start
   - End
+  - wall
   layers:
   - Default
   - TransparentFX
