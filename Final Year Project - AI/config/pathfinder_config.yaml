@@ -1,9 +1,33 @@
-PathFinder:
+PathFinderCon:
+  trainer: ppo
+  batch_size: 2048
+  beta: 5.0e-3
+  buffer_size: 10500
+  epsilon: 0.2
+  hidden_units: 32
+  lambd: 0.9
+  learning_rate: 1e-5
+  learning_rate_schedule: linear
+  max_steps: 10.0e4
+  memory_size: 128
+  normalize: false
+  num_epoch: 3
+  num_layers: 1
+  time_horizon: 64
+  summary_freq: 10000
+  sequence_length: 4
+  use_recurrent: false
+  reward_signals:
+    extrinsic:
+      strength: 1.0
+      gamma: 0.8
+      
+PathFinderDis:
   trainer: ppo
   batch_size: 512
-  beta: 5.0e-3
+  beta: 1e-4
   buffer_size: 2048
-  epsilon: 0.2
+  epsilon: 0.1
   hidden_units: 128
   lambd: 0.9
   learning_rate: 3.0e-4

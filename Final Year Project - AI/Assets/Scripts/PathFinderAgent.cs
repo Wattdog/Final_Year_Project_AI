@@ -11,7 +11,8 @@ public class PathFinderAgent : Agent
 
     public Transform Target;
     public Transform Tiles;
-    public float speed = 2.5f;
+    public float speed;
+    //public int maxVel;
     public UI_Handler ui;
 
     // Start is called before the first frame update
@@ -47,17 +48,55 @@ public class PathFinderAgent : Agent
     {
         if (ui.start == true)
         {
-            AddReward(-0.01f);
             Vector3 controlSignal = Vector3.zero;
             controlSignal.x = vectorAction[0];
             controlSignal.z = vectorAction[1];
             rBody.AddForce(controlSignal * speed);
 
+            //float velX = rBody.velocity.x;
+            //float velZ = rBody.velocity.z;
+
+            //if(velX <= maxVel && velZ <= maxVel)
+            //{
+            //    rBody.AddForce(controlSignal * speed);
+            //}
+            
             float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+            //Debug.Log("Current Distance: " + distanceToTarget);
+
+            //if (distanceToTarget > 10)
+            //{
+            //    AddReward(-0.05f);
+            //}
+
+            if (distanceToTarget < 10)
+            {
+                AddReward(0.1f);
+            }
+            else if (distanceToTarget < 9)
+            {
+                AddReward(0.15f);
+            }
+            else if (distanceToTarget < 8)
+            {
+                AddReward(0.2f);
+            }
+            else if (distanceToTarget < 7)
+            {
+                AddReward(0.25f);
+            }
+            else if (distanceToTarget < 6)
+            {
+                AddReward(0.3f);
+            }
+            else if (distanceToTarget < 5)
+            {
+                AddReward(0.35f);
+            }
 
             if (distanceToTarget < 1.42f)
             {
-                AddReward(1.0f);
+                AddReward(1f);
                 Debug.Log("Reached Target!");
                 EndEpisode();
             }

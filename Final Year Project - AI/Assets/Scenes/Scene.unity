@@ -1454,10 +1454,10 @@ MonoBehaviour:
     VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: ae88aad076ebd964e818cfa7f2ccbd77, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: PathFinder
+  m_BehaviorName: PathFinderCon
   TeamId: 0
   m_UseChildSensors: 1
 --- !u!114 &572910303

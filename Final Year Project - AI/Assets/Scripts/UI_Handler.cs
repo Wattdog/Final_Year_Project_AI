@@ -21,12 +21,6 @@ public class UI_Handler : MonoBehaviour
         start = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void startTraining()
     {
         // Starts training
