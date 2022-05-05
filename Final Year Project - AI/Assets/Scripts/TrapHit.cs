@@ -19,7 +19,7 @@ public class TrapHit : MonoBehaviour
 
     void hitTrap()
     {
-        agent.AddReward(-1f);
+        agent.AddReward(-0.3f);
         Reset();
     }
 

@@ -1434,7 +1434,7 @@ MonoBehaviour:
   MaxStep: 0
   Target: {fileID: 375084017}
   Tiles: {fileID: 1545359592}
-  speed: 1.5
+  speed: 3
   ui: {fileID: 1837780198}
 --- !u!114 &572910302
 MonoBehaviour:
@@ -1454,7 +1454,7 @@ MonoBehaviour:
     VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: ae88aad076ebd964e818cfa7f2ccbd77, type: 3}
+  m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PathFinderCon

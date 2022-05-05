@@ -72,7 +72,7 @@ public class PathFinderAgent_new : Agent
     {
         if (ui.start == true)
         {
-            //AddReward(-0.1f);
+            AddReward(0.2f);
             var action = Mathf.FloorToInt(vectorAction[0]);
 
             var targetPos = transform.position;
@@ -110,12 +110,12 @@ public class PathFinderAgent_new : Agent
 
                 if (hit.Where(col => col.gameObject.CompareTag("End")).ToArray().Length == 1)
                 {
-                    SetReward(1f);
+                    SetReward(5f);
                     EndEpisode();
                 }
                 if (hit.Where(col => col.gameObject.CompareTag("Trap")).ToArray().Length == 1)
                 {
-                    SetReward(-1f);
+                    SetReward(-0.5f);
                     EndEpisode();
                 }
             }
