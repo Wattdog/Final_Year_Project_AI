@@ -7,12 +7,16 @@ using Unity.MLAgents;
 
 public class PathFinderAgent_new : Agent
 {
-    Vector3 startPos;
+    // Starting Position
+    Vector3 startPos = new Vector3(0.0f, 1.0f, -5.0f);
 
+    // UI Handler
     public UI_Handler ui;
 
+    // Mask actions
     public bool maskActions = true;
 
+    // Actions for the agent
     const int k_NoAction = 0; // do nothing!
     const int k_Up = 1;
     const int k_Down = 2;
@@ -24,7 +28,8 @@ public class PathFinderAgent_new : Agent
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
+        // Sets agents position to start position
+        transform.position = startPos;
         Debug.Log("Start Pos: " + startPos);
     }
 
@@ -40,6 +45,7 @@ public class PathFinderAgent_new : Agent
 
     public override void CollectDiscreteActionMasks(DiscreteActionMasker actionMasker)
     {
+        // Masks agents action
         if (maskActions)
         {
             var positionX = (int)transform.position.x;
@@ -70,15 +76,24 @@ public class PathFinderAgent_new : Agent
 
     public override void OnActionReceived(float[] vectorAction)
     {
+        // Checks to see if player has clicked the start button
+        // If the start button has been pressed the agent will start
+        // to find the route
         if (ui.start == true)
         {
-            AddReward(0.2f);
+            // Adds reward for every action the agent does
+            AddReward(2f);
+            // Generates a number between 0 and 4
             var action = Mathf.FloorToInt(vectorAction[0]);
 
+            // Used to determine where the agent will move to
             var targetPos = transform.position;
 
+            // Generated number will be put through switch case to 
+            // decide which action has been chosen
             switch (action)
             {
+                // Will move the agent to certain position depending on the action
                 case k_NoAction:
                     // do nothing
                     break;
@@ -101,21 +116,25 @@ public class PathFinderAgent_new : Agent
                 default:
                     break;
             }
+            // Creates a box collider for the agent
                     var hit = Physics.OverlapBox(targetPos,
                 new Vector3(0.5f, 0.5f, 0.5f));
 
+            // Checks to see if the agent has collided with a wall
             if (hit.Where(col => col.gameObject.CompareTag("wall")).ToArray().Length == 0)
             {
                 transform.position = targetPos;
-
+                
+                // If the goal is reached the agent will be rewarded and will be reset
                 if (hit.Where(col => col.gameObject.CompareTag("End")).ToArray().Length == 1)
                 {
-                    SetReward(5f);
+                    SetReward(20f);
                     EndEpisode();
                 }
+                // If the agent hits a trap it will be punished and some of the reward will be taken away
                 if (hit.Where(col => col.gameObject.CompareTag("Trap")).ToArray().Length == 1)
                 {
-                    SetReward(-0.5f);
+                    SetReward(-3f);
                     EndEpisode();
                 }
             }
@@ -124,6 +143,7 @@ public class PathFinderAgent_new : Agent
 
     public override void Heuristic(float[] actionsOut)
     {
+        // Used to test the movement of the agent
         actionsOut[0] = k_NoAction;
         if (Input.GetKey(KeyCode.D))
         {
